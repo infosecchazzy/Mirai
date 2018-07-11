@@ -677,7 +677,6 @@ static ipv4_t get_random_ip(void)
 {
     uint32_t tmp;
     uint8_t o1, o2, o3, o4;
-
     do
     {
         tmp = rand_next();
@@ -699,7 +698,10 @@ static ipv4_t get_random_ip(void)
           (o1 == 169 && o2 > 254) ||                // 169.254.0.0/16   - IANA NAT reserved
           (o1 == 198 && o2 >= 18 && o2 < 20) ||     // 198.18.0.0/15    - IANA Special use
           (o1 >= 224) ||                            // 224.*.*.*+       - Multicast
-          (o1 == 6 || o1 == 7 || o1 == 11 || o1 == 21 || o1 == 22 || o1 == 26 || o1 == 28 || o1 == 29 || o1 == 30 || o1 == 33 || o1 == 55 || o1 == 214 || o1 == 215) // Department of Defense
+          (o1 == 6 || o1 == 7 || o1 == 11 || o1 == 21 
+	   || o1 == 22 || o1 == 26 || o1 == 28 
+	   || o1 == 29 || o1 == 30 || o1 == 33 || o1 == 55 
+	   || o1 == 214 || o1 == 215)              // Department of Defense
     );
 
     return INET_ADDR(o1,o2,o3,o4);
