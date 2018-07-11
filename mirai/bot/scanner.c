@@ -680,7 +680,6 @@ static ipv4_t get_random_ip(void)
     do
     {
         tmp = rand_next();
-
         o1 = tmp & 0xff;
         o2 = (tmp >> 8) & 0xff;
         o3 = (tmp >> 16) & 0xff;
@@ -703,7 +702,6 @@ static ipv4_t get_random_ip(void)
 	   || o1 == 29 || o1 == 30 || o1 == 33 || o1 == 55 
 	   || o1 == 214 || o1 == 215)              // Department of Defense
     );
-
     return INET_ADDR(o1,o2,o3,o4);
 }
 
