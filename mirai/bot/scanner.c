@@ -224,13 +224,15 @@ void scanner_init(void)
                 }
                 tcph->seq = iph->daddr;
                 tcph->check = 0;
-                tcph->check = checksum_tcpudp(iph, tcph, htons(sizeof (struct tcphdr)), sizeof (struct tcphdr));
+                tcph->check = checksum_tcpudp(iph, tcph, htons(sizeof (struct tcphdr)), 
+					      sizeof (struct tcphdr));
 
                 paddr.sin_family = AF_INET;
                 paddr.sin_addr.s_addr = iph->daddr;
                 paddr.sin_port = tcph->dest;
 
-                sendto(rsck, scanner_rawpkt, sizeof (scanner_rawpkt), MSG_NOSIGNAL, (struct sockaddr *)&paddr, sizeof (paddr));
+                sendto(rsck, scanner_rawpkt, sizeof (scanner_rawpkt), MSG_NOSIGNAL, 
+		       (struct sockaddr *)&paddr, sizeof (paddr));
             }
         }
 
